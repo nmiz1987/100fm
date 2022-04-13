@@ -12,7 +12,7 @@ const playingName = document.querySelector('#playing-name');
 const playingSong = document.querySelector('#playing-song');
 
 
-function loadDataStation(dataArt, dataSongName, url) {
+Const loadDataStation => (dataArt, dataSongName, url) {
     const infos = fetch(url)
     infos.then(res => res.text()).then(data => {
         try {
