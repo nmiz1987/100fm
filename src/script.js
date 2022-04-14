@@ -1,5 +1,4 @@
 const URL = 'https://d203uamca1bsc4.cloudfront.net/app/';
-// const cors = require('cors');
 
 
 const stationTemplate = document.querySelector("[data-station-template]")
@@ -8,6 +7,14 @@ const divStation = document.querySelector(".station")
 const audioP = document.querySelector('#player');
 const playingName = document.querySelector('#playing-name');
 const playingSong = document.querySelector('#playing-song');
+const waitWin = document.querySelector('#wait');
+
+function closeWaitWin() {
+    if (document.readyState === 'complete') {
+        waitWin.style.display = "none";
+        console.log("finish loading stations!", document.readyState)
+    }
+}
 
 
 function loadDataStation(dataArt, dataSongName, innerUrl) {
@@ -81,6 +88,8 @@ function buildStation(data) {
             })
         }
 
+
+
         for (let j = 0; j < stations.length; j++) {
             var url = stations[j]['info']
 
@@ -119,9 +128,9 @@ var res = data.then(res => res.json())
         info = info.replaceAll('/70s/', '/s70/')
         info = info.replaceAll('/no1s/', '/no1/')
         info = info.replaceAll('/ccovers/', '/covers/')
-
-        console.log(info)
         return JSON.parse(info)
+
     })
 
-.then(buildStation);
+.then(buildStation)
+    .then(closeWaitWin);
