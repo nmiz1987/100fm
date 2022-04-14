@@ -79,19 +79,19 @@ function buildStation(data) {
             })
         }
 
-        for (let j = 0; j < stations.length; j++) {
-            var url = stations[j]['info']
+  //      for (let j = 0; j < stations.length; j++) {
+   //         var url = stations[j]['info']
 
-            const dataArt = document.createElement("span")
-            dataArt.setAttribute("class", 'artist')
-            const dataSongName = document.createElement("span")
-            dataSongName.setAttribute("class", 'song')
-            const dataChannel = document.createElement("div")
-            dataChannel.setAttribute("class", "play")
-            var audioElement = document.createElement('audio');
-            audioElement.setAttribute("src", stations[j]['audio'])
-            dataChannel.append(dataArt, dataSongName, audioElement)
-            dataPlaying.append(dataChannel)
+ //           const dataArt = document.createElement("span")
+ //           dataArt.setAttribute("class", 'artist')
+ //           const dataSongName = document.createElement("span")
+ //           dataSongName.setAttribute("class", 'song')
+ //           const dataChannel = document.createElement("div")
+ //           dataChannel.setAttribute("class", "play")
+ //           var audioElement = document.createElement('audio');
+ //           audioElement.setAttribute("src", stations[j]['audio'])
+ //           dataChannel.append(dataArt, dataSongName, audioElement)
+//            dataPlaying.append(dataChannel)
       //      dataChannel.addEventListener('click', () => {
       //          audioP.pause()
       //          audioP.setAttribute('src', stations[j]['audio'])
@@ -101,7 +101,7 @@ function buildStation(data) {
        //     })
          //   loadDataStation(dataArt, dataSongName, url)
         //    setInterval(loadDataStation, 60000, dataArt, dataSongName, url)
-        }
+  //      }
         stationContainer.append(card)
     }
 }
