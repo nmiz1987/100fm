@@ -1,7 +1,3 @@
-// import fetch from 'cross-fetch';
-// import { xml2json } from './xml-js';
-
-
 const URL = 'https://d203uamca1bsc4.cloudfront.net/app/';
 
 const stationTemplate = document.querySelector("[data-station-template]")
@@ -103,7 +99,7 @@ function buildStation(data) {
                 playingSong.innerText = dataSongName.innerText
                 audioP.play()
             })
-            loadDataStation(dataArt, dataSongName, url)
+         //   loadDataStation(dataArt, dataSongName, url)
         //    setInterval(loadDataStation, 60000, dataArt, dataSongName, url)
         }
         stationContainer.append(card)
