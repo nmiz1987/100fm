@@ -1,5 +1,7 @@
 # 100fm digital
 
+[link to web-site] (https://nmiz1987.github.io/100fm/)
+
 I really like the digital channels of **100fm** - https://digital.100fm.co.il/.
 
 As part of self-learning of frontend I decided to build a "clone" of the site on my additional features.
