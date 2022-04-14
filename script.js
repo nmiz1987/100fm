@@ -92,13 +92,13 @@ function buildStation(data) {
             audioElement.setAttribute("src", stations[j]['audio'])
             dataChannel.append(dataArt, dataSongName, audioElement)
             dataPlaying.append(dataChannel)
-            dataChannel.addEventListener('click', () => {
-                audioP.pause()
-                audioP.setAttribute('src', stations[j]['audio'])
-                playingName.innerText = dataArt.innerText
-                playingSong.innerText = dataSongName.innerText
-                audioP.play()
-            })
+      //      dataChannel.addEventListener('click', () => {
+      //          audioP.pause()
+      //          audioP.setAttribute('src', stations[j]['audio'])
+      //          playingName.innerText = dataArt.innerText
+      //          playingSong.innerText = dataSongName.innerText
+       //         audioP.play()
+       //     })
          //   loadDataStation(dataArt, dataSongName, url)
         //    setInterval(loadDataStation, 60000, dataArt, dataSongName, url)
         }
