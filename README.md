@@ -1,6 +1,6 @@
 # 100fm digital
 
-[link to web-site] (https://nmiz1987.github.io/100fm/)
+[link to web-site](https://nmiz1987.github.io/100fm/)
 
 I really like the digital channels of **100fm** - https://digital.100fm.co.il/.
 
