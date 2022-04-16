@@ -76,13 +76,12 @@ async function buildStation(data) {
             dataChannel.addEventListener('click', () => {
                 audioP.pause()
                 audioP.setAttribute('src', stations[i]['audio'])
-                playingName.innerText = dataArt.innerText
-                playingSong.innerText = dataSongName.innerText
+                playingName.innerText = name
+                    // playingName.innerText = dataArt.innerText
+                    // playingSong.innerText = dataSongName.innerText
                 audioP.play()
             })
         }
-
-
 
         for (let j = 0; j < stations.length; j++) {
             var url = stations[j]['info']
@@ -100,8 +99,9 @@ async function buildStation(data) {
             dataChannel.addEventListener('click', () => {
                     audioP.pause()
                     audioP.setAttribute('src', stations[j]['audio'])
-                    playingName.innerText = dataArt.innerText
-                    playingSong.innerText = dataSongName.innerText
+                    playingName.innerText = name
+                        // playingName.innerText = dataArt.innerText
+                        // playingSong.innerText = dataSongName.innerText
                     audioP.play()
                 })
                 // loadDataStation(dataArt, dataSongName, url)
@@ -148,7 +148,6 @@ async function fetchSations(url) {
         info = info.replaceAll('/ccovers/', '/covers/')
         info = JSON.parse(info)
         buildStation(info)
-            // return JSON.parse(info)
     } catch (e) {
         console.log("problem loading stations info...")
         console.log(e)
