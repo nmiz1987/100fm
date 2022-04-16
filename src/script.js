@@ -98,7 +98,6 @@ async function buildStation(data) {
             dataChannel.append(dataArt, dataSongName, audioElement)
             dataPlaying.append(dataChannel)
             dataChannel.addEventListener('click', () => {
-                    loadDataStation(dataArt, dataSongName, url)
                     audioP.pause()
                     audioP.setAttribute('src', stations[j]['audio'])
                     playingName.innerText = dataArt.innerText
