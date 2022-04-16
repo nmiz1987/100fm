@@ -34,7 +34,7 @@ async function loadDataStation(dataArt, dataSongName, innerUrl) {
 }
 
 
-function buildStation(data) {
+async function buildStation(data) {
     var res = data['stations']
     for (let i = 0; i < res.length; i++) {
         const name = res[i]['name']
@@ -98,13 +98,38 @@ function buildStation(data) {
             dataChannel.append(dataArt, dataSongName, audioElement)
             dataPlaying.append(dataChannel)
             dataChannel.addEventListener('click', () => {
-                audioP.pause()
-                audioP.setAttribute('src', stations[j]['audio'])
-                playingName.innerText = dataArt.innerText
-                playingSong.innerText = dataSongName.innerText
-                audioP.play()
-            })
-            loadDataStation(dataArt, dataSongName, url)
+                    loadDataStation(dataArt, dataSongName, url)
+                    audioP.pause()
+                    audioP.setAttribute('src', stations[j]['audio'])
+                    playingName.innerText = dataArt.innerText
+                    playingSong.innerText = dataSongName.innerText
+                    audioP.play()
+                })
+                // loadDataStation(dataArt, dataSongName, url)
+
+            try {
+                const infos = await fetch(url)
+                const data = await infos.text()
+                try {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(data, "application/xml");
+                    var nowArtist = xml.getElementsByTagName("artist")[0].childNodes[0].nodeValue
+                    var nowName = xml.getElementsByTagName("name")[0].childNodes[0].nodeValue
+                } catch (e) {
+                    console.log('loadDataStation DOMParser fail:\n', e)
+                }
+                if (nowArtist == 'undefined' || !nowArtist || nowArtist == 'Unknown' || nowArtist == '-')
+                    nowArtist = '100FM'
+                if (nowName == 'undefined' || !nowName || nowName == 'Unknown' || nowName == '-')
+                    nowName = '100FM'
+                dataArt.innerText = nowArtist
+                dataSongName.innerText = nowName
+            } catch (e) {
+                console.log('loadDataStation async fail:\n', e)
+            }
+
+
+
             setInterval(loadDataStation, 60000, dataArt, dataSongName, url)
         }
         stationContainer.append(card)
