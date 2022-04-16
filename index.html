@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <link rel="stylesheet" href="src/styles.css" />
-    <script src="src/script.js" defer>
+    <script async src="src/script.js">
     </script>
     <title>Netanel Mizrahi - 100FM Digital</title>
 </head>
@@ -21,7 +21,7 @@
 
         <div class="stations-list" data-stations-list-container>
             <template data-station-template>
-                    <div class="station">
+                    <div class="station" data-station>
                         <div class="cover" data-cover></div>
                         <div class="name" data-name></div>
                         <div class="desc" data-desc></div>
@@ -37,13 +37,7 @@
         <audio id="player" src="" width="400px" controls></audio>
     </div>
     </div>
-    <!-- <div id="wait">
-        <span id="wait-wraper">
-        <span id="wait-text">
-        המערכת טוענת את התחנות, אנא המתן...
-    </span>
-        </span>
-    </div> -->
+
 </body>
 
 </html>

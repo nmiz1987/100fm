@@ -9,13 +9,6 @@ const playingName = document.querySelector('#playing-name');
 const playingSong = document.querySelector('#playing-song');
 const waitWin = document.querySelector('#wait');
 
-// function closeWaitWin() {
-//     if (document.readyState === 'complete') {
-//         waitWin.style.display = "none";
-//         console.log("finish loading stations!", document.readyState)
-//     }
-// }
-
 
 function loadDataStation(dataArt, dataSongName, innerUrl) {
     const infos = fetch(innerUrl)
@@ -133,4 +126,3 @@ var res = data.then(res => res.json())
     })
 
 .then(buildStation)
-    // .then(closeWaitWin);
