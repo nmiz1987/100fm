@@ -10,26 +10,27 @@ const playingSong = document.querySelector('#playing-song');
 const waitWin = document.querySelector('#wait');
 
 
-function loadDataStation(dataArt, dataSongName, innerUrl) {
-    const infos = fetch(innerUrl)
-    infos.then(res => res.text()).then(data => {
+async function loadDataStation(dataArt, dataSongName, innerUrl) {
+    try {
+        const infos = await fetch(innerUrl)
+        const data = await infos.text()
         try {
             const parser = new DOMParser();
             const xml = parser.parseFromString(data, "application/xml");
             var nowArtist = xml.getElementsByTagName("artist")[0].childNodes[0].nodeValue
             var nowName = xml.getElementsByTagName("name")[0].childNodes[0].nodeValue
-        } catch {
-
+        } catch (e) {
+            console.log('loadDataStation DOMParser fail:\n', e)
         }
-
         if (nowArtist == 'undefined' || !nowArtist || nowArtist == 'Unknown' || nowArtist == '-')
             nowArtist = '100FM'
         if (nowName == 'undefined' || !nowName || nowName == 'Unknown' || nowName == '-')
             nowName = '100FM'
-
         dataArt.innerText = nowArtist
         dataSongName.innerText = nowName
-    })
+    } catch (e) {
+        console.log('loadDataStation async fail:\n', e)
+    }
 }
 
 
@@ -110,19 +111,41 @@ function buildStation(data) {
     }
 }
 
-
-const data = fetch(URL);
-var res = data.then(res => res.json())
-    .then(res => {
-        var info = JSON.stringify(res)
+async function fetchSations(url) {
+    try {
+        const data = await fetch(URL);
+        var info = await data.json();
+        info = JSON.stringify(info)
         info = info.replaceAll('/2000/', '/2000s/')
         info = info.replaceAll('/90s/', '/s90/')
         info = info.replaceAll('/80s/', '/s80/')
         info = info.replaceAll('/70s/', '/s70/')
         info = info.replaceAll('/no1s/', '/no1/')
         info = info.replaceAll('/ccovers/', '/covers/')
-        return JSON.parse(info)
+        info = JSON.parse(info)
+        buildStation(info)
+            // return JSON.parse(info)
+    } catch (e) {
+        console.log("problem loading stations info...")
+        console.log(e)
+    }
+}
 
-    })
+fetchSations(URL)
+    // buildStation(info)
 
-.then(buildStation)
+// const data = fetch(URL);
+// var res = data.then(res => res.json())
+//     .then(res => {
+//         var info = JSON.stringify(res)
+//         info = info.replaceAll('/2000/', '/2000s/')
+//         info = info.replaceAll('/90s/', '/s90/')
+//         info = info.replaceAll('/80s/', '/s80/')
+//         info = info.replaceAll('/70s/', '/s70/')
+//         info = info.replaceAll('/no1s/', '/no1/')
+//         info = info.replaceAll('/ccovers/', '/covers/')
+//         return JSON.parse(info)
+
+//     })
+
+// .then(buildStation)
