@@ -155,7 +155,7 @@ img {
 audio {
     border: 2px solid rgb(95, 95, 95);
     border-radius: 150px;
-    width: 50vh;
+    width: min(50vw, 400px);
     margin-bottom: 15px;
 }
 
